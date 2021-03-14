@@ -4,7 +4,8 @@ $('#chatBox').hide();
 
 $('#btnStart').click(() => {
     socket.emit('login', {
-        username: $('#inpUsername').val()
+        username: $('#inpUsername').val(),
+        password: $('#inpPassword').val()
     })
 })
 socket.on('logged_in', () => {
@@ -19,4 +20,7 @@ $('#btnSendMsg').click(function() {
 })
 socket.on('msg_rece', (data) => {
     $('#ulMsgs').append($('<li></li>').text(data.msg))
+})
+socket.on('login_failed', () => {
+    alert("Username or Password failed")
 })
