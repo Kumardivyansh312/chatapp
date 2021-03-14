@@ -19,7 +19,7 @@ $('#btnSendMsg').click(function() {
     })
 })
 socket.on('msg_rece', (data) => {
-    $('#ulMsgs').append($('<li></li>').text(data.msg))
+    $('#ulMsgs').append($('<li></li>').text(`${data.from}:${data.msg}`))
 })
 socket.on('login_failed', () => {
     alert("Username or Password failed")
