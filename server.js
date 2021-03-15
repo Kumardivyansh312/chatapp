@@ -5,6 +5,7 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 
+const PORT = process.env.PORT || 1234
 let users = {
     'Anshul': 'an123'
 }
@@ -41,6 +42,6 @@ io.on('connection', (socket) => {
     })
 })
 app.use('/', express.static(__dirname + '/public'))
-server.listen('1234', () => {
-    console.log("server started at http://localhost:1234")
+server.listen(PORT, () => {
+    console.log(`server started at http://localhost:${PORT}`)
 })
